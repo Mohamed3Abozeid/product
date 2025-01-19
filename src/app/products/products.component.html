@@ -1,0 +1,27 @@
+<div class="container pt-5">
+    <input type="search" class="form-control" placeholder="Search...." [(ngModel)]="serarchTrem">
+    <div class="row ">
+        <div class="col-lg-3 col-md-4 col-sm-6  p-3" *ngFor="let item of porducts|search:serarchTrem ">
+            <div class="card text-center">
+                <div class="card-img ">
+                    <img [src]="item.image" [alt]="item.title" class="w-50 pt-3">
+                </div>
+                <div class="card-body  card-content">
+                    <h3 class="card-title h4">
+                        {{item.title.split(' ').slice(0,2).join(" ")}}
+                    </h3>
+
+                    <div class=" d-flex justify-content-between py-3">
+                        <span class="card-price text-success fw-bolder">
+                            {{item.price|currency:'USD'}}
+                        </span>
+                        <span> {{ item.category}}<i class="fa-solid fa-star"></i></span>
+                    </div>
+                    <div class=" btn btn-success  d-block text-capitalize" [routerLink]="['/Product/'+item.id]">
+                        show Detials
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
